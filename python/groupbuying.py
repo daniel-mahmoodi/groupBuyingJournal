@@ -4,7 +4,6 @@ from scipy.optimize import minimize
 
 import scipy
 
-
 T2 = 2
 C1 = 250
 C2 = 50
@@ -29,7 +28,7 @@ for i in range(0, 100):
         p1 = p[1]
         T1 = (p[1] - p[0]) / alpha2
         return -(p01 * (a11 - b11 * (p01 + (T1 * alpha1)) + gama1 * (p02 + (T2 * alpha1))) + p1 * (
-                    a12 - b12 * p1 + p2 * gama2))
+                a12 - b12 * p1 + p2 * gama2))
 
 
     def constraint1(p):
@@ -39,92 +38,86 @@ for i in range(0, 100):
         return a11 - b11 * (p[0] + (T1 * alpha1)) + gama1 * (p02 + (T2 * alpha1))
 
 
-
     def constraint4(p):
         T1 = (p[1] - p[0]) / alpha2
         if C1 - (a11 - b11 * (p[0] + (T1 * alpha1)) + gama1 * (p02 + (T2 * alpha1))) + (
-                    a12 - b12 * p[1] + p2 * gama2)< 0 :
+                a12 - b12 * p[1] + p2 * gama2) < 0:
             print('constraint4error')
         return C1 - (a11 - b11 * (p[0] + (T1 * alpha1)) + gama1 * (p02 + (T2 * alpha1))) + (
-                    a12 - b12 * p[1] + p2 * gama2)
-
+                a12 - b12 * p[1] + p2 * gama2)
 
 
     def constraint6(p):
-        if (a12 - b12 * p[1] + p2 * gama2) < 0:
+        if (a12 - b12 * p[1] + p2 * gama2):
             print('constraint6error')
         return (a12 - b12 * p[1] + p2 * gama2)
 
 
     def constraint7(p):
         T1 = (p[1] - p[0]) / alpha2
-        if p[1] - (p[0] + (T1 * alpha1))<0:
-            print('constraint7error')
+        # if p[1] - (p[0] + (T1 * alpha1)) < 0:
+        #     print('constraint7error')
         return p[1] - (p[0] + (T1 * alpha1))
 
 
     def constraint8(p):
         T1 = (p[1] - p[0]) / alpha2
-        if p[0] + (T1 * alpha2) - p[1] < 0:
-            print('constraint8error')
+        # if p[0] + (T1 * alpha2) - p[1] < 0:
+        #     print('constraint8error')
         return p[0] + (T1 * alpha2) - p[1]
 
 
-
-
     def constraint11(p):
-        if p[1] - p[0] < 0:
-            print('constraint11error')
+        # if p[1] - p[0] < 0:
+        #     print('constraint11error')
         return p[1] - p[0]
 
 
     def constraint12(p):
         T1 = (p[1] - p[0]) / alpha2
         d1 = (a11 - b11 * (p[0] + (T1 * alpha1)) + gama1 * (p02 + (T2 * alpha1))) + (a12 - b12 * p[1] + p2 * gama2)
-        if d1 - T1 < 0:
-            print('constraint12error')
+        # if d1 - T1 < 0:
+        #     print('constraint12error')
         return d1 - T1
 
 
     def constraint13(p):
-        if p2 - p[0] < 0:
-            print('constraint13error')
+        # if p2 - p[0] < 0:
+        #     print('constraint13error')
         return p2 - p[0]
 
 
     def constraint14(p):
-        if p[1] - p02 < 0:
-            print('constraint14error')
+        # if p[1] - p02 < 0:
+        #     print('constraint14error')
         return p[1] - p02
 
 
-
     def constraint16(p):
-        if (b12 * p[1]) - (p2 * gama2) < 0:
-            print('constraint16error')
+        # if (b12 * p[1]) - (p2 * gama2) < 0:
+        #     print('constraint16error')
         return (b12 * p[1]) - (p2 * gama2)
-
 
 
     def constraint18(p):
         T1 = (p[1] - p[0]) / alpha2
-        if (b11 * (p[0] + (T1 * alpha1))) - (gama1 * (p02 + (T2 * alpha1))) < 0:
-            print('constraint18error')
+        # if (b11 * (p[0] + (T1 * alpha1))) - (gama1 * (p02 + (T2 * alpha1))) < 0:
+        #     print('constraint18error')
         return (b11 * (p[0] + (T1 * alpha1))) - (gama1 * (p02 + (T2 * alpha1)))
 
 
     def constraint20(p):
         T1 = (p[1] - p[0]) / alpha2
         d1 = (a11 - b11 * (p[0] + (T1 * alpha1)) + gama1 * (p02 + (T2 * alpha1))) + (a12 - b12 * p[1] + p2 * gama2)
-        if C1 - d1 < 0:
-            print('constraint20error')
+        # if C1 - d1 < 0:
+        #     print('constraint20error')
         return C1 - d1
 
 
     def constraint21(p):
         T1 = (p[1] - p[0]) / alpha2
-        if T1 - 2 < 0:
-            print('constraint21error')
+        # if T1 - 2 < 0:
+        #     print('constraint21error')
         return T1 - 2
 
 
@@ -132,19 +125,13 @@ for i in range(0, 100):
 
     cons1 = {'type': 'ineq', 'fun': constraint1}
 
-   
-
     cons4 = {'type': 'ineq', 'fun': constraint4}
-
-   
 
     cons6 = {'type': 'ineq', 'fun': constraint6}
 
     cons7 = {'type': 'ineq', 'fun': constraint7}
 
     cons8 = {'type': 'ineq', 'fun': constraint8}
-
-   
 
     cons11 = {'type': 'ineq', 'fun': constraint11}
 
@@ -154,14 +141,9 @@ for i in range(0, 100):
 
     cons14 = {'type': 'ineq', 'fun': constraint14}
 
-   
-
     cons16 = {'type': 'ineq', 'fun': constraint16}
 
-   
-
     cons18 = {'type': 'ineq', 'fun': constraint18}
-
 
     cons20 = {'type': 'ineq', 'fun': constraint20}
 
@@ -169,7 +151,7 @@ for i in range(0, 100):
 
     cons = [cons1, cons4, cons6, cons7,
             cons8, cons11, cons12, cons13, cons14,
-            cons16, cons18, cons20,cons21]
+            cons16, cons18, cons20, cons21]
 
     R1max = minimize(func1, (2, 6), bounds=bnds, method='SLSQP', constraints=cons)
 
@@ -188,7 +170,7 @@ for i in range(0, 100):
         T2 = (pp[1] - pp[0]) / alpha2
         # T2 = round(tt2)
         return -(p02 * (a21 - b21 * (p02 + (T2 * alpha1)) + gama1 * (p01 + (T1 * alpha1))) + p2 * (
-                    a22 - b22 * p2 + p1 * gama2))
+                a22 - b22 * p2 + p1 * gama2))
 
 
     def constraint1(pp):
@@ -204,13 +186,11 @@ for i in range(0, 100):
     def constraint3(pp):
         T2 = (pp[1] - pp[0]) / alpha2
         return C2 - (a21 - b21 * (pp[0] + (T2 * alpha1)) + gama1 * (p01 + (T1 * alpha1))) + (
-                    a22 - b22 * pp[1] + p1 * gama2)
+                a22 - b22 * pp[1] + p1 * gama2)
 
 
-   
     def constraint5(pp):
         return (a22 - b22 * pp[1] + p1 * gama2)
-
 
 
     def constraint9(pp):
@@ -241,16 +221,13 @@ for i in range(0, 100):
         return d2 - T2
 
 
-
     def constraint17(pp):
         return (b22 * pp[1]) - (p1 * gama2)
-
 
 
     def constraint19(pp):
         T2 = (pp[1] - pp[0]) / alpha2
         return (b21 * (pp[0] + (T2 * alpha1))) - (gama1 * (p01 + (T1 * alpha1)))
-
 
 
     def constraint21(pp):
@@ -267,11 +244,7 @@ for i in range(0, 100):
 
     cons3 = {'type': 'ineq', 'fun': constraint3}
 
-
     cons5 = {'type': 'ineq', 'fun': constraint5}
-
-
-
 
     cons9 = {'type': 'ineq', 'fun': constraint9}
 
@@ -279,19 +252,15 @@ for i in range(0, 100):
 
     cons11 = {'type': 'ineq', 'fun': constraint11}
 
-
     cons13 = {'type': 'ineq', 'fun': constraint13}
 
     cons14 = {'type': 'ineq', 'fun': constraint14}
 
     cons15 = {'type': 'ineq', 'fun': constraint15}
 
-
     cons17 = {'type': 'ineq', 'fun': constraint17}
 
-
     cons19 = {'type': 'ineq', 'fun': constraint19}
-
 
     cons21 = {'type': 'ineq', 'fun': constraint21}
 
@@ -310,4 +279,3 @@ for i in range(0, 100):
     print("P02: {}".format(p02) + "  ####  P2: {}".format(p2))
     print("R2max: {}".format(R2max_final))
     print("T2: {}".format(T2))
-  
