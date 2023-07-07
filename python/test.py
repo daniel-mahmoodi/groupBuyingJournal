@@ -1,38 +1,28 @@
-from scipy.optimize import minimize
+from pulp import LpMaximize, LpProblem, LpVariable, value
 
-print("Optimal Solution:1")
+# Create the maximization problem
+problem = LpProblem("IntegerMaximizationProblem", LpMaximize)
 
+# Define the decision variables
+x = LpVariable("x", lowBound=0, cat='Integer')
+y = LpVariable("y", lowBound=0, cat='Integer')
 
 # Define the objective function
-def objective(x):
-    return -(x[0] ** 2 + x[1] ** 2)
+objective = 2*x + 3*y
+problem += objective
 
+# Add constraints
+problem += x + y <= 10
+problem += y - x <= 1
+# Solve the problem
+status = problem.solve()
 
-print("Optimal Solution:1")
-
-
-# Define the constraint function
-
-def constraint1(x):
-    if x[0] + x[1]-1:
-        print('error1')
-        return x[0] + x[1] - 1
-def constraint2(x):
-    if x[0] + x[1]-1:
-        print('error2')
-        return x[0] + x[1] - 1
-# Define the initial guess
-x0 = [0, 0]
-print("Optimal Solution:1")
-# Define the bounds for variables
-bounds = [(0, None), (0, None)]
-print("Optimal Solution:2")
-# Define the constraint dictionary
-constraint_dict = {'type': 'eq', 'fun': constraint}
-print("Optimal Solution:3")
-# Perform the optimization
-result = minimize(objective, x0, method='SLSQP', bounds=bounds, constraints=constraint_dict)
-
-# Print the optimal solution
-print("Optimal Solution:")
-print(result.x)
+# Check the solution status
+if status == 1:
+    # Print the optimal solution
+    print("Optimal Solution:")
+    print("x =", value(x))
+    print("y =", value(y))
+    print("Objective =", value(objective))
+else:
+    print("No solution found.")
