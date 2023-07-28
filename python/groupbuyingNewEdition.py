@@ -17,7 +17,7 @@ gama1 = 0.5
 gama2 = 0.5
 b11 = 2.1
 b12 = 2.1
-b21 = 2.5
+b21 = 1
 b22 = 2.5
 p02 = 2.698
 p2 = 1.698
@@ -35,7 +35,7 @@ for i in range(0, 100):
     def constraint1(p):
         T1 = (p[1] - p[0]) / alpha2
         if a11 - b11 * (p[0] + (T1 * alpha1)) + gama1 * (p02 + (T2 * alpha1)) < 0:
-            print('constraint1error')
+            print(a11 - b11 * (p[0] + (T1 * alpha1)) + gama1 * (p02 + (T2 * alpha1)))
         return a11 - b11 * (p[0] + (T1 * alpha1)) + gama1 * (p02 + (T2 * alpha1))
 
 
@@ -43,21 +43,24 @@ for i in range(0, 100):
         T1 = (p[1] - p[0]) / alpha2
         if C1 - (a11 - b11 * (p[0] + (T1 * alpha1)) + gama1 * (p02 + (T2 * alpha1))) + (
                 a12 - b12 * p[1] + p2 * gama2) < 0:
-            print('constraint4error')
+            print('constraint5')
+            print(C1 - (a11 - b11 * (p[0] + (T1 * alpha1)) + gama1 * (p02 + (T2 * alpha1))) + (
+                a12 - b12 * p[1] + p2 * gama2))
         return C1 - (a11 - b11 * (p[0] + (T1 * alpha1)) + gama1 * (p02 + (T2 * alpha1))) + (
                 a12 - b12 * p[1] + p2 * gama2)
 
 
     def constraint6(p):
-        if (a12 - b12 * p[1] + p2 * gama2):
-            print('constraint6error')
+        if (a12 - b12 * p[1] + p2 * gama2<0):
+            print('constraint6')
+            print((a12 - b12 * p[1] + p2 * gama2))
         return (a12 - b12 * p[1] + p2 * gama2)
 
 
     def constraint7(p):
         T1 = (p[1] - p[0]) / alpha2
-        # if p[1] - (p[0] + (T1 * alpha1)) < 0:
-        #     print('constraint7error')
+        if p[1] - (p[0] + (T1 * alpha1)) < 0:
+            print(p[1] - (p[0] + (T1 * alpha1)))
         return p[1] - (p[0] + (T1 * alpha1))
 
 
@@ -179,6 +182,9 @@ for i in range(0, 100):
 
     def constraint1(pp):
         T2 = (pp[1] - pp[0]) / alpha2
+        # print('2constraint1')
+        # if (T2 - 2):
+            # print(T2 - 2)
         return T2 - 2
 
 

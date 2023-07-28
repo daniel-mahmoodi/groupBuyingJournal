@@ -4,10 +4,10 @@ from scipy.optimize import minimize
 
 import scipy
 
-T2 = 2
-C1 = 250
+T2 = 3
+C1 = 200
 C2 = 50
-a11 = 500
+a11 = 200
 a12 = 300
 a21 = 100
 a22 = 50
@@ -159,6 +159,8 @@ for i in range(0, 100):
     p01 = round(R1max.x[0], 3)
     p1 = round(R1max.x[1], 3)
     T1 = (p1 - p01) / alpha2
+    # T1 = int(round(T1))
+    T1 = int(math.floor(T1))
     print("P01: {}".format(p01) + "  ####  P1: {}".format(p1))
     print("R1Max: {}".format(R1max_final))
     print("T1: {}".format(T1))
@@ -275,7 +277,7 @@ for i in range(0, 100):
     p02 = round(R2max.x[0], 3)
     p2 = round(R2max.x[1], 3)
     T2 = (p2 - p02) / alpha2
-
+    T2 = int(math.floor(T2))
     print("P02: {}".format(p02) + "  ####  P2: {}".format(p2))
     print("R2max: {}".format(R2max_final))
     print("T2: {}".format(T2))

@@ -1,18 +1,18 @@
 console.log("-----------------journal-----------------");
-let A11 = 500;
-let A12 = 300;
-let A21 = 100;
-let A22 = 50;
-let B11 = 1.3;
-let B12 = 1.3;
-let B21 = 1;
-let B22 = 2;
-let Gama1 = 0.1;
-let Gama2 = 1;
+let A11 = 150;
+let A12 = 200;
+let A21 = 250;
+let A22 = 300;
+let B11 = 2.1;
+let B12 = 2.1;
+let B21 = 0.8;
+let B22 = 2.5;
+let Gama1 = 0.5;
+let Gama2 = 0.5;
 let Alpha1 = 1;
 let Alpha2 = 2;
 // /////////////////////////////////////////////
-let C1 = 250;
+let C1 = 50;
 let C2 = 50;
 let a11 = A11;
 let a12 = A12;
@@ -74,11 +74,27 @@ let P1HP2Hc126c239 =
 let P2HP1Hc126c239 =
   (-2 * (C2 - a21) * b11 + a11 * gama1) / (2 * b11 * b21 - gama1 ** 2);
 // c132c238:
+let P1HP2Hc132c238 =
+  (2 * a11 * b21 + a21 * gama1) / (4 * b11 * b21 - gama1 * gama1);
+let P2HP1Hc132c238 =
+  (2 * a21 * b11 + a11 * gama1) / (4 * b11 * b21 - gama1 * gama1);
 let P1LP2Hc132c238 =
   (2 * (-C1 + a11 + a12) * b21 + a21 * (gama1 + gama2)) /
   (2 * b11 * b21 + 2 * b12 * b21 - gama1 * (gama1 + gama2));
 let P2HP1Lc132c238 =
   (a21 * (b11 + b12) + (-C1 + a11 + a12) * gama1) /
+  (2 * b11 * b21 + 2 * b12 * b21 - gama1 * (gama1 + gama2));
+// c138c232:
+let P1HP2Hc138c232 =
+  (2 * a21 * b11 + a11 * gama1) / (4 * b11 * b21 - gama1 * gama1);
+
+let P2HP1Hc138c232 =
+  (2 * a11 * b21 + a21 * gama1) / (4 * b11 * b21 - gama1 * gama1);
+let P1LP2Hc138c232 =
+  (2 * (-C2 + a21 + a22) * b11 + a11 * (gama1 + gama2)) /
+  (2 * b11 * b21 + 2 * b12 * b21 - gama1 * (gama1 + gama2));
+let P2HP1Lc138c232 =
+  (a11 * (b21 + b22) + (-C2 + a21 + a22) * gama1) /
   (2 * b11 * b21 + 2 * b12 * b21 - gama1 * (gama1 + gama2));
 // c132c239:
 let P1LP2Hc132c239 =
@@ -91,11 +107,27 @@ let P1HP2Hc132c239 =
   (a11 * b21 - C2 * gama1 + a21 * gama1) / (2 * b11 * b21 - gama1 ** 2);
 let P2HP1Hc132c239 =
   (-2 * (C2 - a21) * b11 + a11 * gama1) / (2 * b11 * b21 - gama1 ** 2);
+// c139c232:
+let P2LP1Hc139c232 =
+  ((-C2 + a21 + a22) * b11 - (C1 - a11) * (gama1 + gama2)) /
+  (b21 * b11 + b22 * b11 - gama1 * (gama1 + gama2));
+let P1HP2Lc139c232 =
+  ((-C1 + a11) * b21 + (-C1 + a11) * b22 + (-C2 + a21 + a22) * gama1) /
+  (b21 * b11 + b22 * b11 - gama1 * (gama1 + gama2));
+let P2HP1Hc139c232 =
+  (a21 * b11 - C1 * gama1 + a11 * gama1) / (2 * b11 * b21 - gama1 ** 2);
+let P1HP2Hc139c232 =
+  (-2 * (C1 - a11) * b21 + a21 * gama1) / (2 * b11 * b21 - gama1 ** 2);
 // c138c239:
 let P1HP2Hc138c239 =
   (a11 * b21 - C2 * gama1 + a21 * gama1) / (2 * b11 * b21 - gama1 ** 2);
 let P2HP1Hc138c239 =
   (-2 * (C2 - a21) * b11 + a11 * gama1) / (2 * b11 * b21 - gama1 ** 2);
+// c139c238:
+let P1HP2Hc139c238 =
+  (a21 * b11 - C1 * gama1 + a11 * gama1) / (2 * b11 * b21 - gama1 ** 2);
+let P2HP1Hc139c238 =
+  (-2 * (C1 - a11) * b21 + a21 * gama1) / (2 * b11 * b21 - gama1 ** 2);
 // c143c239:
 let P1HP2Hc143c239 =
   (a11 * b21 - C2 * gama1 + a21 * gama1) / (2 * b11 * b21 - gama1 ** 2);
@@ -285,7 +317,7 @@ if (q10 >= q1) {
           console.log("P1L28 =", P1L28, "and R1L30 = ", R1L30);
           console.log("P1LP2Hc126c226 =");
           console.log("P1HP2Lc126c226 =");
-        } else if (leftSideOfc232 <= C2 && C2 < c226) {
+        }  if (leftSideOfc232 <= C2 && C2 < c226) {
           console.log(
             "P1HP2Hc126c232 & P2HP1Hc126c232 =",
             P1H27,
@@ -296,7 +328,7 @@ if (q10 >= q1) {
           console.log(" P2LP1Lc126c232 =", P2LP1Lc126c232);
           console.log("P1LP2Hc126c232 =", P1LP2Hc126c232);
           console.log("P2HP1Lc126c232 =", P2HP1Lc126c232);
-        } else if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
+        }  if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
           console.log(
             "P1HP2Hc126c238 & P2HP1Hc126c238 =",
             P1H27,
@@ -305,52 +337,61 @@ if (q10 >= q1) {
           );
           console.log("P1LP2Hc126c238 =", P1LP2Hc126c238);
           console.log("P2HP1Lc126c238 =", P2HP1Lc126c238);
-        } else if (C2 < leftSideOfc238) {
+        }  if (C2 < leftSideOfc238) {
           console.log("P1HP2Hc126c239 =", P1HP2Hc126c239);
           console.log("P1LP2Hc126c239 =", P1LP2Hc126c239);
           console.log("P2HP1Lc126c239 =", P2HP1Lc126c239);
         } else {
           console.log("error");
         }
-      } else if (leftSideOfc132 <= C1 && C1 < c126) {
+      }  if (leftSideOfc132 <= C1 && C1 < c126) {
         if (c226 <= C2) {
           console.log("i should write it");
-        } else if (leftSideOfc232 <= C2 && C2 < c226) {
+        } if (leftSideOfc232 <= C2 && C2 < c226) {
           console.log("P1H27 =", P1H27, "and R1H29 = ", R1H29);
           console.log("P1L33 =", P1L33, "and R1L34 = ", R1L34);
-        } else if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
+        }  if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
           console.log("P1HP2Hc132c238 =", P1H27);
           console.log("P1LP2Hc132c238 =", P1LP2Hc132c238);
           console.log("P2HP1Lc132c238 =", P2HP1Lc132c238);
-        } else if (C2 < leftSideOfc238) {
-          console.log("P1HP2Hc132c239 =", P1HP2Hc132c239);
+        }  if (C2 < leftSideOfc238) {
+          console.log(
+            "leftSideOfc132 <= C1 && C1 < c126  ,  C2 < leftSideOfc238 !!!!!==> P1HP2Hc132c239 =",
+            P1HP2Hc132c239
+          );
           console.log("P2HP1Hc132c239 =", P2HP1Hc132c239);
           console.log("P1LP2Hc132c239 =", P1LP2Hc132c239);
           console.log("P2HP1Lc132c239 =", P2HP1Lc132c239);
         } else {
           console.log("error");
         }
-      } else if (leftSideOfc138 <= C1 && C1 < leftSideOfc132) {
+      }  if (leftSideOfc138 <= C1 && C1 < leftSideOfc132) {
         if (c226 <= C2) {
           console.log("i should write it");
-        } else if (leftSideOfc232 <= C2 && C2 < c226) {
-          console.log("i should write it");
-        } else if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
+        }  if (leftSideOfc232 <= C2 && C2 < c226) {
+          console.log("c1:38-4,c2:32-4");
+        }  if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
           console.log("P1H27 =", P1H27, "and R1H29 = ", R1H29);
-        } else if (C2 < leftSideOfc238) {
+        }  if (C2 < leftSideOfc238) {
           console.log("P1HP2Hc138c239 =", P1HP2Hc138c239);
           console.log("P2HP1Hc138c239 =", P2HP1Hc138c239);
         } else {
           console.log("error");
         }
-      } else if (C1 < leftSideOfc138) {
+      }  if (C1 < leftSideOfc138) {
         if (c226 <= C2) {
           console.log("i should write it");
-        } else if (leftSideOfc232 <= C2 && C2 < c226) {
+        }  if (leftSideOfc232 <= C2 && C2 < c226) {
+          console.log(
+            "c1:39-4,c2:32-4 faghat copy shode C1 < leftSideOfc138,leftSideOfc232 <= C2 && C2 < c226 ==>"
+          );
+          console.log(" P2HP1Hc139c232 =", P2HP1Hc139c232, P2HP1Hc139c232 * C2);
+          console.log("P1HP2Hc139c232 =", P1HP2Hc139c232, P1HP2Hc139c232 * C1);
+          console.log("P2LP1Hc139c232 =", P2LP1Hc139c232, P2LP1Hc139c232 * C2);
+          console.log("P1HP2Lc139c232 =", P1HP2Lc139c232, P1HP2Lc139c232 * C1);
+        }  if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
           console.log("i should write it");
-        } else if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
-          console.log("i should write it");
-        } else if (C2 < leftSideOfc238) {
+        }  if (C2 < leftSideOfc238) {
           console.log("P1H40 =", P1H40, "and R1H41 = ", R1H41);
         } else {
           console.log("error");
@@ -358,22 +399,22 @@ if (q10 >= q1) {
       } else {
         console.log("error");
       }
-    } else if (P1p > q1 && q1 < Q1) {
+    }  if (P1p > q1 && q1 < Q1) {
       // 43
       if (leftSideOfc138 <= C1) {
         if (leftSideOfc238 <= C2) {
           console.log("P1H27 =", P1H27, "and R1H29 = ", R1H29);
-        } else if (C2 < leftSideOfc238) {
+        }  if (C2 < leftSideOfc238) {
           console.log("P1HP2Hc143c239 =", P1HP2Hc143c239);
           console.log("P2HP1Hc143c239 =", P2HP1Hc143c239);
         } else {
           console.log("error");
         }
         // 39
-      } else if (C1 < leftSideOfc138) {
+      }  if (C1 < leftSideOfc138) {
         if (leftSideOfc238 <= C2) {
           console.log("i should write it");
-        } else if (C2 < leftSideOfc238) {
+        }  if (C2 < leftSideOfc238) {
           console.log("P1H40 =", P1H40, "and R1H41 = ", R1H41);
         } else {
           console.log("error");
@@ -384,45 +425,100 @@ if (q10 >= q1) {
     } else {
       console.log("error");
     }
-  } else if (q1 >= Q1) {
+  }  if (q1 >= Q1) {
     console.log("dominant collective market is weak for Retailer1");
     if (c126 <= C1) {
       if (c226 <= C2) {
+        console.log("c126 <= C1 , c226 <= C2");
         // console.log("P1L28 =", P1L28, "and R1L30 = ", R1L30);
         // P1L33 -> c2 ==c'1
         console.log("P1L28 =", P1L28, "and R1L30 = ", R1L30);
-      } else if (leftSideOfc232 <= C2 && C2 < c226) {
-      } else if (leftSideOfc232 > C2) {
+      }
+      if (leftSideOfc232 <= C2 && C2 < c226) {
+        console.log("c126 <= C1 , leftSideOfc232 <= C2 && C2 < c226");
+      }
+      if (leftSideOfc232 > C2) {
+        console.log("c126 <= C1 , leftSideOfc232 > C2");
       } else {
         console.log("error");
       }
       //
-    } else if (leftSideOfc132 <= C1 && C1 < c126) {
+    }
+    if (leftSideOfc132 <= C1 && C1 < c126) {
+      console.log("leftSideOfc132 <= C1 && C1 < c126");
       if (c226 <= C2) {
-      } else if (leftSideOfc232 <= C2 && C2 < c226) {
+        console.log("leftSideOfc132 <= C1 && C1 < c126, c226 <= C2");
+      }
+      if (leftSideOfc232 <= C2 && C2 < c226) {
+        console.log(
+          "leftSideOfc132 <= C1 && C1 < c126 , leftSideOfc232 <= C2 && C2 < c226"
+        );
         console.log("P1L33 =", P1L33, "and R1L34 = ", R1L34);
+        console.log("P2L33 =", P2L33, "and R2L34 = ", R2L34);
         console.log("", leftSideOfc232);
         console.log("", C2);
         console.log("", c226);
-      } else if (leftSideOfc232 > C2) {
-      } else {
-        console.log("error");
+        console.log(
+          "baresi inke agar darin baze ham hast che gheymatai midahad :leftSideOfc238 > C2"
+          );
+          console.log(
+            "P1LP2H44c132c236 =",
+            P1LP2H44c132c236,
+            "and R1 = ",
+            P1LP2H44c132c236 * C1
+            );
+            console.log(
+              "P2HP1L44c132c236 =",
+              P2HP1L44c132c236,
+              "and R2 = ",
+              P2HP1L44c132c236 * C2
+              );
+            }
+            if (leftSideOfc232 > C2) {
+              console.log("leftSideOfc232 > C2");
+              console.log("P1LP2H44c132c236 =", P1LP2H44c132c236, "and R1 = ", P1LP2H44c132c236*C1);
+              console.log("P2HP1L44c132c236 =", P2HP1L44c132c236, "and R2 = ", P2HP1L44c132c236*C2);
       }
-    } else if (leftSideOfc132 > C1) {
+      //  else {
+      //   console.log("error");
+      // }
+    }
+    if (leftSideOfc132 > C1) {
+      console.log("leftSideOfc132 > C1");
       if (c226 <= C2) {
-      } else if (leftSideOfc232 <= C2 && C2 < c226) {
-      } else if (leftSideOfc232 > C2) {
+        console.log("c226 <= C2");
+      }
+      if (leftSideOfc232 <= C2 && C2 < c226) {
+        console.log("leftSideOfc232 <= C2 && C2 < c226");
+        console.log(
+          "P1HP2L44c136c232 =",
+          P1HP2L44c136c232,
+          "and R1 = ",
+          P1HP2L44c136c232 * C1
+        );
+        console.log(
+          "P2LP1H44c136c232 =",
+          P2LP1H44c136c232,
+          "and R2 = ",
+          P2LP1H44c136c232 * C2
+        );
+      }
+      if (leftSideOfc232 > C2) {
         console.log("P1H40 =", P1H40, "and R1H41 = ", R1H41);
       } else {
-        console.log("error");
+        console.log(
+          "dar inbaze nist: leftSideOfc132 > C1, leftSideOfc232 > C2"
+        );
       }
-    } else {
-      console.log("error");
-    }
+    } 
+    // else {
+    //   console.log("dar inbaze nist : leftSideOfc132 > C1");
+    // }
   } else {
     console.log("error");
   }
-} else if (q10 < q1) {
+} 
+ if (q10 < q1) {
   console.log("Dominant individual market for Retailer1");
 
   if (C1 <= c153) {
@@ -583,10 +679,10 @@ if (q10 >= q1) {
   // change 1aand 2 :
   let P1HP2L44c136c232 =
     ((-C1 + a11) * b21 + (-C1 + a11) * b22 + (-C2 + a21 + a22) * gama1) /
-    (b11 * b21 + b12 * b21 - gama1 * (gama1 + gama2));
+    (b21 * b11 + b22 * b11 - gama1 * (gama1 + gama2));
   let P2LP1H44c136c232 =
     ((-C2 + a21 + a22) * b11 - (C1 - a11) * (gama1 + gama2)) /
-    (b11 * b21 + b12 * b21 - gama1 * (gama1 + gama2));
+    (b21 * b11 + b22 * b11 - gama1 * (gama1 + gama2));
 
   // ///////////
   let P1H27 = (2 * a11 * b21 + a21 * gama1) / (4 * b11 * b21 - gama1 ** 2);
@@ -624,7 +720,9 @@ if (q10 >= q1) {
   //   ((a11 + a12 - c226) * (b21 + b22) + (a21 + a22 - C1) * (gama1 + gama2)) /
   //   ((b11 + b12) * (b21 + b22) - (gama1 + gama2) * (gama1 + gama2));
   // let R2L30 = P2L28 * c226;
-
+  console.log(
+    "innnnnnnnnnnnnnnnnnnnneshtebaheeeeeee bbbinn kojaha bazeshtebahnevesthius"
+  );
   let R2H29 =
     (b21 * (2 * a21 * b11 + a11 * gama1) * (2 * a11 * b21 + a21 * gama1)) /
     (4 * b11 * b21 - gama1 * gama1);
@@ -641,7 +739,34 @@ if (q10 >= q1) {
     ((b11 + b12) * (b21 + b22) - (gama1 + gama2) * (gama1 + gama2));
   let R1L34 = P1L33 * C1;
   let R2L34 = P2L33 * C2;
-
+  //1.hardogheymate balatar:
+  let P1HP2HNEW = (2 * a11 * b21 + a21 * gama1) / (4 * b11 * b21 - gama1 ** 2);
+  let P2HP1HNEW = (2 * a21 * b11 + a11 * gama1) / (4 * b11 * b21 - gama1 ** 2);
+  let R1HR2HNEW =
+    (b11 * ((2 * a11 * b21 + a21 * gama1) * (2 * a11 * b21 + a21 * gama1))) /
+    (4 * b11 * b21 - gama1 * gama1) ** 2;
+  let R2HR1HNEW =
+    (b21 * (2 * a21 * b11 + a11 * gama1) * (2 * a21 * b11 + a11 * gama1)) /
+    (4 * b11 * b21 - gama1 * gama1) ** 2;
+  // 2.retailer1  gheymate balatar va digari gheymate paintar:
+  let P1HP2LNew =
+    (a11 * (b21 + b22) + (a21 + a22 - C2) * gama1) /
+    (2 * b11 * (b21 + b22) - gama1 * (gama1 + gama2));
+  let P2LP1HNew =
+    (2 * b11 * (a21 + a22 - C2) + a11 * (gama1 + gama2)) /
+    (2 * b11 * (b21 + b22) - gama1 * (gama1 + gama2));
+  let R1HNEW = P1HP2LNew * C1;
+  let R2LNEW = P2LP1HNew * C2;
+  // 3.retailer2  gheymate balatar va digari gheymate paintar:
+  let P2HP1LNew =
+    (a21 * (b11 + b12) + (a11 + a12 - C1)) /
+    (2 * b21 * (b11 + b12) - gama1 * (gama1 + gama2));
+  let P1LP2HNew =
+    (2 * b21 * (a11 + a12 - C1) + a21 * (gama1 + gama2)) /
+    (2 * b21 * (b11 + b12) - gama1 * (gama1 + gama2));
+  let R1LNEW = P2HP1LNew * C2;
+  let R2HNEW = P1LP2HNew * C1;
+  //3morede bala new ast.
   let P1H40 =
     ((a11 - C1) * b21 + (a21 - C2) * gama1) / (b11 * b21 - gama1 ** 2);
   let R1H41 = C1 * P1H40;
@@ -696,7 +821,7 @@ if (q10 >= q1) {
           console.log("P1L28 =", P1L28, "and R1L30 = ", R1L30);
           console.log("P1LP2Hc126c226 =");
           console.log("P1HP2Lc126c226 =");
-        } else if (leftSideOfc232 <= C2 && C2 < c226) {
+        }  if (leftSideOfc232 <= C2 && C2 < c226) {
           console.log(
             "P1HP2Hc126c232 & P2HP1Hc126c232 =",
             P1H27,
@@ -707,7 +832,7 @@ if (q10 >= q1) {
           console.log(" P2LP1Lc126c232 =", P2LP1Lc126c232);
           console.log("P1LP2Hc126c232 =", P1LP2Hc126c232);
           console.log("P2HP1Lc126c232 =", P2HP1Lc126c232);
-        } else if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
+        }  if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
           console.log(
             "P1HP2Hc126c238 & P2HP1Hc126c238 =",
             P1H27,
@@ -716,24 +841,24 @@ if (q10 >= q1) {
           );
           console.log("P1LP2Hc126c238 =", P1LP2Hc126c238);
           console.log("P2HP1Lc126c238 =", P2HP1Lc126c238);
-        } else if (C2 < leftSideOfc238) {
+        }  if (C2 < leftSideOfc238) {
           console.log("P1HP2Hc126c239 =", P1HP2Hc126c239);
           console.log("P1LP2Hc126c239 =", P1LP2Hc126c239);
           console.log("P2HP1Lc126c239 =", P2HP1Lc126c239);
         } else {
           console.log("error");
         }
-      } else if (leftSideOfc132 <= C1 && C1 < c126) {
+      }  if (leftSideOfc132 <= C1 && C1 < c126) {
         if (c226 <= C2) {
           console.log("i should write it");
-        } else if (leftSideOfc232 <= C2 && C2 < c226) {
+        }  if (leftSideOfc232 <= C2 && C2 < c226) {
           console.log("P1H27 =", P1H27, "and R1H29 = ", R1H29);
           console.log("P1L33 =", P1L33, "and R1L34 = ", R1L34);
-        } else if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
+        }  if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
           console.log("P1HP2Hc132c238 =", P1H27);
           console.log("P1LP2Hc132c238 =", P1LP2Hc132c238);
           console.log("P2HP1Lc132c238 =", P2HP1Lc132c238);
-        } else if (C2 < leftSideOfc238) {
+        }  if (C2 < leftSideOfc238) {
           console.log("P1HP2Hc132c239 =", P1HP2Hc132c239);
           console.log("P2HP1Hc132c239 =", P2HP1Hc132c239);
           console.log("P1LP2Hc132c239 =", P1LP2Hc132c239);
@@ -741,50 +866,112 @@ if (q10 >= q1) {
         } else {
           console.log("error");
         }
-      } else if (leftSideOfc138 <= C1 && C1 < leftSideOfc132) {
+      }  if (leftSideOfc138 <= C1 && C1 < leftSideOfc132) {
         if (c226 <= C2) {
           console.log("i should write it");
-        } else if (leftSideOfc232 <= C2 && C2 < c226) {
+        }  if (leftSideOfc232 <= C2 && C2 < c226) {
           console.log("i should write it");
-        } else if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
+        }  if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
           console.log("P1H27 =", P1H27, "and R1H29 = ", R1H29);
-        } else if (C2 < leftSideOfc238) {
+        }  if (C2 < leftSideOfc238) {
           console.log("P1HP2Hc138c239 =", P1HP2Hc138c239);
           console.log("P2HP1Hc138c239 =", P2HP1Hc138c239);
         } else {
           console.log("error");
         }
-      } else if (C1 < leftSideOfc138) {
+      }  if (C1 < leftSideOfc138) {
         if (c226 <= C2) {
           console.log("i should write it");
-        } else if (leftSideOfc232 <= C2 && C2 < c226) {
-          console.log("i should write it");
-        } else if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
-          console.log("i should write it");
-        } else if (C2 < leftSideOfc238) {
+        }  if (leftSideOfc232 <= C2 && C2 < c226) {
+          console.log("//");
+          console.log("C1 < leftSideOfc138");
+          console.log("P1HP2Lc139c232", P1HP2Lc139c232, P1HP2Lc139c232 * C1);
+          console.log("P2LP1Hc139c232", P2LP1Hc139c232, P2LP1Hc139c232 * C2);
+          console.log("P1HP2Hc139c232", P1HP2Hc139c232, P1HP2Hc139c232 * C1);
+          console.log("P2HP1Hc139c232", P2HP1Hc139c232, P2HP1Hc139c232 * C2);
+          console.log("leftSideOfc238 <= C2 && C2 < leftSideOfc232:");
+          console.log("P1HP2Hc139c238", P1HP2Hc139c238, P1HP2Hc139c238 * C1);
+          console.log("P2HP1Hc139c238", P2HP1Hc139c238, P2HP1Hc139c238 * C2);
+          console.log("C2 < leftSideOfc238:");
           console.log("P1H40 =", P1H40, "and R1H41 = ", R1H41);
-        } else {
-          console.log("error");
+          console.log("//");
+          // ghesmate pain sharayeti ra dar nazar migirim k agar estesnaan in etefagh bioftad:
+          // c1: 50 c126 206.3 leftSideOfc132 -830 leftSideOfc138 88.5
+          // c2: 50 c226 313.2 leftSideOfc232 -50 leftSideOfc238 135.5
+          console.log(
+            " ghesmate pain sharayeti ra dar nazar migirim k agar estesnaan in etefagh bioftad: c1: 50 c126 206.3 leftSideOfc132 -830 leftSideOfc138 88.5  c2: 50 c226 313.2 leftSideOfc232 -50 leftSideOfc238 135.5"
+          );
+          console.log("leftSideOfc138 <= C1 && C1 < leftSideOfc132");
+          if (c226 <= C2) {
+            console.log("i should write it");
+          }
+          if (leftSideOfc232 <= C2 && C2 < c226) {
+            console.log("leftSideOfc232 <= C2 && C2 < c226");
+            console.log("P1HP2Hc138c232", P1HP2Hc138c232, P1HP2Hc138c232 * C1);
+            console.log("P2HP1Hc138c232", P2HP1Hc138c232, P2HP1Hc138c232 * C2);
+            console.log("P1LP2Hc138c232", P1LP2Hc138c232, P1LP2Hc138c232 * C1);
+            console.log("P2HP1Lc138c232", P2HP1Lc138c232, P2HP1Lc138c232 * C2);
+
+            console.log(
+              "leftSideOfc238 <= C2 && C2 < leftSideOfc232 ==>c132,c232"
+            );
+            console.log("P1H27 =", P1H27, "and R1H29 = ", R1H29, P1H27 * C1);
+            console.log("P2H27 =", P2H27, "and R2H29 = ", R2H29, P2H27 * C2);
+
+            console.log("C2 < leftSideOfc238");
+            console.log(
+              "P1HP2Hc138c239 =",
+              P1HP2Hc138c239,
+              P1HP2Hc138c239 * C1
+            );
+            console.log(
+              "P2HP1Hc138c239 =",
+              P2HP1Hc138c239,
+              P2HP1Hc138c239 * C2
+            );
+          }
+          if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
+            console.log("P1H27 =", P1H27, "and R1H29 = ", R1H29);
+          }
+          if (C2 < leftSideOfc238) {
+            console.log("P1HP2Hc138c239 =", P1HP2Hc138c239);
+            console.log("P2HP1Hc138c239 =", P2HP1Hc138c239);
+          }
+          // else {
+          //   console.log("error");
+          // }
+          console.log("//");
         }
+        if (leftSideOfc238 <= C2 && C2 < leftSideOfc232) {
+          console.log("i should write it");
+        }
+        if (C2 < leftSideOfc238) {
+          console.log("P1H40 =", P1H40, "and R1H41 = ", R1H41);
+        }
+        // else {
+        //   console.log("error");
+        // }
       } else {
         console.log("error");
       }
-    } else if (P1p > q1 && q1 < Q1) {
+    }  if (P1p > q1 && q1 < Q1) {
       // 43
+      console.log("43");
       if (leftSideOfc138 <= C1) {
         if (leftSideOfc238 <= C2) {
           console.log("P1H27 =", P1H27, "and R1H29 = ", R1H29);
-        } else if (C2 < leftSideOfc238) {
+        }  if (C2 < leftSideOfc238) {
           console.log("P1HP2Hc143c239 =", P1HP2Hc143c239);
           console.log("P2HP1Hc143c239 =", P2HP1Hc143c239);
         } else {
           console.log("error");
         }
         // 39
-      } else if (C1 < leftSideOfc138) {
+        console.log("39");
+      }  if (C1 < leftSideOfc138) {
         if (leftSideOfc238 <= C2) {
           console.log("i should write it");
-        } else if (C2 < leftSideOfc238) {
+        }  if (C2 < leftSideOfc238) {
           console.log("P1H40 =", P1H40, "and R1H41 = ", R1H41);
         } else {
           console.log("error");
@@ -795,7 +982,7 @@ if (q10 >= q1) {
     } else {
       console.log("error");
     }
-  } else if (q1 >= Q1) {
+  }  if (q1 >= Q1) {
     console.log("dominant collective market is weak for Retailer1");
 
     console.log(
@@ -825,10 +1012,10 @@ if (q10 >= q1) {
         // console.log("P1L28 =", P1L28, "and R1L30 = ", R1L30);
         // P1L33 -> c2 ==c'1
         console.log("P1L28 =", P1L28, "and R1L30 = ", R1L30);
-      } else if (leftSideOfc232 <= C2 && C2 < c226) {
-        console.log("P1LP2L44c126c232 =", P1LP2L44c126c232);
-        console.log("P2LP1L44c126c232 =", P2LP1L44c126c232);
-      } else if (leftSideOfc232 > C2) {
+      }  if (leftSideOfc232 <= C2 && C2 < c226) {
+        console.log("P1LP2L44c126c232 =", P1LP2L44c126c232,P1LP2L44c126c232*c126);
+        console.log("P2LP1L44c126c232 =", P2LP1L44c126c232,P2LP1L44c126c232*C2);
+      }  if (leftSideOfc232 > C2) {
         console.log(
           "P1LP2H44c126c236 =",
           P1LP2H44c126c236,
@@ -847,15 +1034,63 @@ if (q10 >= q1) {
       console.log("test");
 
       //
-    } else if (leftSideOfc132 <= C1 && C1 < c126) {
+    } if (leftSideOfc132 <= C1 && C1 < c126) {
+      console.log('leftSideOfc132 <= C1 && C1 < c126');
       if (c226 <= C2) {
-        console.log("i should write this");
-      } else if (leftSideOfc232 <= C2 && C2 < c226) {
-        console.log("P1L33 =", P1L33, "and R1L34 = ", R1L34);
-        console.log("", leftSideOfc232);
-        console.log("", C2);
-        console.log("", c226);
-      } else if (leftSideOfc232 > C2) {
+        console.log("i should write this c226 <= C2");
+      }  if (leftSideOfc232 <= C2 && C2 < c226) {
+        console.log('leftSideOfc232 <= C2 && C2 < c226');
+        console.log("P1L33 =", P1L33, "and R1L34 = ", R1L34,'or',R1=P1L33*C1);
+        console.log("P2L33 =", P2L33, "and R2L34 = ", R2L34);
+console.log('batavajoh b mesale adadi zaheran in NEW ha eshtebah hastan');
+        console.log(
+          "1 gheymate balatar retailer 2 gheymate paintar",
+          "P1HP2LNew =",
+          P1HP2LNew,
+          "and R1HNEW = ",
+          R1HNEW
+        );
+        console.log(
+          "1 gheymate balatar retailer 2 gheymate paintar",
+          "P2LP1HNew =",
+          P2LP1HNew,
+          "and R2LNEW = ",
+          R2LNEW
+        );
+        console.log(
+          "1 gheymate balatar retailer 2 gheymate paintar",
+          "P2HP1LNew =",
+          P2HP1LNew,
+          "and R1LNEW = ",
+          R1LNEW
+        );
+        console.log(
+          "1 gheymate balatar retailer 2 gheymate paintar",
+          "P1LP2HNew =",
+          P1LP2HNew,
+          "and R2HNEW = ",
+          R2HNEW
+        );
+        // P1HP2HNEW  R1HR2HNEW  P2HP1HNEW   R2HR1HNEW
+        console.log(
+          "hardo gheymate bakatar",
+          "P1HP2HNEW =",
+          P1HP2HNEW,
+          "and R1HR2HNEW = ",
+          R1HR2HNEW
+        );
+        console.log(
+          "hardo gheymate bakatar",
+          "P2HP1HNEW =",
+          P2HP1HNEW,
+          "and R2HR1HNEW = ",
+          R2HR1HNEW
+        );
+        console.log("leftSideOfc232", leftSideOfc232);
+        console.log("C2", C2);
+        console.log("c226", c226);
+      }  if (leftSideOfc232 > C2) {
+        console.log('leftSideOfc232 > C2');
         console.log(
           "P1LP2H44c132c236 =",
           P1LP2H44c132c236,
@@ -871,7 +1106,7 @@ if (q10 >= q1) {
       } else {
         console.log("error");
       }
-    } else if (leftSideOfc132 > C1) {
+    }  if (leftSideOfc132 > C1) {
       if (c226 <= C2) {
         let pP1HP2L44c136c232 =
           ((-C1 + a11) * b21 +
@@ -893,7 +1128,7 @@ if (q10 >= q1) {
           "R2:",
           pP2LP1H44c136c232 * c226
         );
-      } else if (leftSideOfc232 <= C2 && C2 < c226) {
+      }  if (leftSideOfc232 <= C2 && C2 < c226) {
         console.log(
           "P1HP2L44c136c232",
           P1HP2L44c136c232,
@@ -906,7 +1141,7 @@ if (q10 >= q1) {
           "R2:",
           P2LP1H44c136c232 * C2
         );
-      } else if (leftSideOfc232 > C2) {
+      }  if (leftSideOfc232 > C2) {
         console.log("P1H40 =", P1H40, "and R1H41 = ", R1H41);
         console.log("P2H40 =", P2H40, "and R2H41 = ", R2H41);
       } else {
@@ -918,6 +1153,7 @@ if (q10 >= q1) {
   } else {
     console.log("error");
   }
-} else {
-  console.log("error");
 }
+//  else {
+//   console.log("error");
+// }

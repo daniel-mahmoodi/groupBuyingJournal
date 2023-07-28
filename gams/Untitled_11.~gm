@@ -12,9 +12,9 @@ b22   /2.5/
 alpha1 /1/
 alpha2 /2/
 C2     /50/
-p01 /   84.456   /
-p1 /   88.456  /
-T1 / 2 /
+p01 /  80.577  /
+p1 /   88.577 /
+T1 / 4 /
  ;
 *integer variable d1;
 integer variable d2;
